@@ -32,6 +32,7 @@ services:
       #    - mysql
       - redis
       - pgsql
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
   # mysql:
   #     image: 'mysql:5.7.44'
   #     ports:
@@ -56,6 +57,7 @@ services:
   #             - '-p${DB_PASSWORD}'
   #         retries: 3
   #         timeout: 5s
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #         
   # phpmyadmin:
   #     image: phpmyadmin/phpmyadmin
   #     links:
@@ -68,6 +70,7 @@ services:
   #         PMA_HOST: mysql
   #     networks:
   #         - sail
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   redis:
     image: 'redis:alpine'
     ports:
@@ -83,8 +86,9 @@ services:
         - ping
       retries: 3
       timeout: 5s
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #             
   pgsql:
-    image: 'postgres:15'
+    image: 'postgres:${DB_POSTGRES_VERSION}'
     ports:
       - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
@@ -108,6 +112,7 @@ services:
         - '${DB_USERNAME}'
       retries: 3
       timeout: 5s
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
 networks:
   sail:
     driver: bridge

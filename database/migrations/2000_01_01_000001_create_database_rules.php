@@ -10,17 +10,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // try {
-        //     DB::connection()->getPDO();
-        //     echo DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME);
-        // } catch (\Exception $e) {
-        //     echo $e;
-        // }
-
-        // if (DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME) == 'pgsql') {
-        //     echo "Running on pgsql; doing something pgsql specific here\n";
-        // }
-
         switch (DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME)) {
 
             case 'pgsql':
