@@ -24,3 +24,8 @@ Homestead.json
 
 # Salvos LOCAL
 .salvos
+
+################################
+
+# Created by https://www.toptal.com/developers/gitignore/api/intellij
+.idea
