@@ -2,12 +2,13 @@ version: '3'
 services:
   laravel.test:
     build:
-      context: ./vendor/laravel/sail/runtimes/8.2
+      context: ./vendor/laravel/sail/runtimes/8.3
       dockerfile: Dockerfile
       args:
         WWWGROUP: '${WWWGROUP}'
     container_name: thesys
-    image: sail-8.2/app
+    image: sail-8.3/app
+    restart: unless-stopped
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     ports:
@@ -35,6 +36,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
   # mysql:
   #     image: 'mysql:5.7.44'
+  #     restart: unless-stopped  
   #     ports:
   #         - '${FORWARD_DB_PORT:-3306}:3306'
   #     environment:
@@ -60,6 +62,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #         
   # phpmyadmin:
   #     image: phpmyadmin/phpmyadmin
+  #     restart: unless-stopped
   #     links:
   #         - mysql:mysql
   #     ports:
@@ -73,6 +76,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   redis:
     image: 'redis:alpine'
+    restart: unless-stopped    
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     volumes:
@@ -89,6 +93,7 @@ services:
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #             
   pgsql:
     image: 'postgres:${DB_POSTGRES_VERSION}'
+    restart: unless-stopped    
     ports:
       - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
