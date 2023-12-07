@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Ramsey\Uuid\Uuid;
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(10)->create();
+
+        Profile::factory(10)->create();
     }
 }

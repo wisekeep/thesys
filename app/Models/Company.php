@@ -21,10 +21,6 @@ class Company extends Model
     //    ];
     protected $fillable = array('*');
 
-    protected $attributes = [
-        'uuid' => (string)Uuid::uuid4()
-    ];
-
     protected $guarded = [
         'id',
         'created_at',
