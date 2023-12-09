@@ -40,10 +40,15 @@ class Profile extends Model
         'profile_file',
     ];
 
-    protected $guarded = ['id'];
-
     protected $casts = [
         'uuid' => 'string',
+    ];
+
+    protected $dates = [
+        'profile_birthday',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public function user(): BelongsTo

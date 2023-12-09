@@ -36,8 +36,6 @@ class Company extends Model
 
     protected $guarded = [
         'id',
-        'created_at',
-        'updated_at'
     ];
 
     protected $casts = [
@@ -45,6 +43,8 @@ class Company extends Model
     ];
 
     protected $dates = [
+        'created_at',
+        'updated_at',
         'deleted_at',
     ];
 }

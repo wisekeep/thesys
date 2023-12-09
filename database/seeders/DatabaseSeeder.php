@@ -4,11 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
 use App\Models\Company;
 use App\Models\Profile;
-use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,9 +19,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'uuid' => Uuid::uuid4(),
-            'name' => 'User Admin',
-            'email' => 'wisekeep@net.com',
+            'uuid'              => fake()->uuid(),
+            'name'              => env('ADMIN_USERNAME'),
+            'email'             => env('ADMIN_EMAIL'),
+            'password'          => Hash::make(env('ADMIN_PASSWORD')),
+            'email_verified_at' => now(),
+            'remember_token'    => Str::random(10),
+            'created_at'        => now(),
+            'updated_at'        => now(),
         ]);
 
         User::factory(10)->create();
