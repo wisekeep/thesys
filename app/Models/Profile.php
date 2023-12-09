@@ -10,9 +10,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Profile extends Model
 {
+    use HasFactory, SoftDeletes, Timestamp;
+
+    protected $model = Profile::class;
+
     protected $table = 'profiles';
 
-    use HasFactory, SoftDeletes, Timestamp;
     protected $fillable = [
         'user_id',
         'uuid',
@@ -35,6 +38,12 @@ class Profile extends Model
         'profile_telephone4',
         'profile_obs',
         'profile_file',
+    ];
+
+    protected $guarded = ['id'];
+
+    protected $casts = [
+        'uuid' => 'string',
     ];
 
     public function user(): BelongsTo

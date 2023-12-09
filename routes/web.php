@@ -21,3 +21,5 @@ Route::get('/', function () {
 // routes/web.php
 
 Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/user/{id}', [UserController::class, 'show']);

@@ -11,19 +11,18 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->string('profile_image')->nullable();
+            $table->unsignedBigInteger ('user_id')->nullable();
+            $table->string('profile_image', 191)->nullable();
             $table->string('profile_cpf', 40)->nullable();
             $table->string('profile_rg', 40)->nullable();
             $table->string('profile_rg_emit', 40)->nullable();
             $table->date('profile_birthday')->nullable();
-            //$table->string('profile_email',191)->unique('uk_profile_email')->nullable();
-            $table->string('profile_email', 191)->nullable();
-            $table->string('profile_address')->nullable();
+            $table->string('profile_email',191)->nullable();
+            $table->string('profile_address', 191)->nullable();
             $table->string('profile_number', 40)->nullable();
             $table->string('profile_neighborhood', 40)->nullable();
             $table->string('profile_city', 40)->nullable();
-            $table->string('profile_estate', 2)->nullable();
+            $table->string('profile_estate', 40)->nullable();
             $table->string('profile_country', 40)->nullable();
             $table->string('profile_cep', 10)->nullable();
             $table->string('profile_telephone1', 15)->nullable();
@@ -34,7 +33,7 @@ return new class extends Migration
             $table->binary('profile_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('user_id', 'fk_profiles_users')
+            $table->foreign('user_id', 'FK_profiles_users')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('RESTRICT')

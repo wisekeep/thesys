@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Company;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        Profile::factory(10)->create();
+        Profile::factory(11)->create();
+
+        Company::factory(2)->create();
     }
 }

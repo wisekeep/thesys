@@ -33,6 +33,7 @@ services:
       #    - mysql
       - redis
       - pgsql
+      #- sqlite3
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
   # mysql:
   #     image: 'mysql:5.7.44'
@@ -73,6 +74,14 @@ services:
   #         PMA_HOST: mysql
   #     networks:
   #         - sail
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+  # sqlite3:
+  #     #image: nouchka/sqlite3:latest
+  #     image: esolang/sqlite3:latest
+  #     stdin_open: true
+  #     tty: true
+  #     volumes:
+  #         - './database/:/root/database/'
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   redis:
     image: 'redis:alpine'
@@ -128,3 +137,5 @@ volumes:
     driver: local
   sail-pgsql:
     driver: local
+  # sqlite3:
+  #   driver: local
