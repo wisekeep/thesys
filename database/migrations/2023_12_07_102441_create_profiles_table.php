@@ -11,13 +11,13 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->unsignedBigInteger ('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('profile_image', 191)->nullable();
             $table->string('profile_cpf', 40)->nullable();
             $table->string('profile_rg', 40)->nullable();
             $table->string('profile_rg_emit', 40)->nullable();
             $table->date('profile_birthday')->nullable();
-            $table->string('profile_email',191)->nullable();
+            $table->string('profile_email', 191)->nullable();
             $table->string('profile_address', 191)->nullable();
             $table->string('profile_number', 40)->nullable();
             $table->string('profile_neighborhood', 40)->nullable();

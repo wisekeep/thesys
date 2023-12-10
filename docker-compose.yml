@@ -17,9 +17,9 @@ services:
     environment:
       # cpu_period: '50000'
       # cpu_quota: '25000'
-      # mem_limit: '1g'
-      # mem_reservation: '512m'
-      # memory: '512m'
+      mem_limit: '512m'
+      mem_reservation: '512m'
+      memory: '512m'
       WWWUSER: '${WWWUSER}'
       LARAVEL_SAIL: 1
       XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
@@ -34,58 +34,58 @@ services:
       - redis
       - pgsql
       #- sqlite3
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
-  # mysql:
-  #     image: 'mysql:5.7.44'
-  #     restart: unless-stopped  
-  #     ports:
-  #         - '${FORWARD_DB_PORT:-3306}:3306'
-  #     environment:
-  #         MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-  #         MYSQL_ROOT_HOST: '%'
-  #         MYSQL_DATABASE: '${DB_DATABASE}'
-  #         MYSQL_USER: '${DB_USERNAME}'
-  #         MYSQL_PASSWORD: '${DB_PASSWORD}'
-  #         MYSQL_ALLOW_EMPTY_PASSWORD: 1
-  #     volumes:
-  #         - 'sail-mysql:/var/lib/mysql'
-  #         - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
-  #     networks:
-  #         - sail
-  #     healthcheck:
-  #         test:
-  #             - CMD
-  #             - mysqladmin
-  #             - ping
-  #             - '-p${DB_PASSWORD}'
-  #         retries: 3
-  #         timeout: 5s
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #         
-  # phpmyadmin:
-  #     image: phpmyadmin/phpmyadmin
-  #     restart: unless-stopped
-  #     links:
-  #         - mysql:mysql
-  #     ports:
-  #         - 8080:80
-  #     environment:
-  #         MYSQL_USERNAME: '${DB_USERNAME}'
-  #         MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-  #         PMA_HOST: mysql
-  #     networks:
-  #         - sail
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-  # sqlite3:
-  #     #image: nouchka/sqlite3:latest
-  #     image: esolang/sqlite3:latest
-  #     stdin_open: true
-  #     tty: true
-  #     volumes:
-  #         - './database/:/root/database/'
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+      # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+      # mysql:
+      #     image: 'mysql:5.7.44'
+      #     restart: unless-stopped
+      #     ports:
+      #         - '${FORWARD_DB_PORT:-3306}:3306'
+      #     environment:
+      #         MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      #         MYSQL_ROOT_HOST: '%'
+      #         MYSQL_DATABASE: '${DB_DATABASE}'
+      #         MYSQL_USER: '${DB_USERNAME}'
+      #         MYSQL_PASSWORD: '${DB_PASSWORD}'
+      #         MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      #     volumes:
+      #         - 'sail-mysql:/var/lib/mysql'
+      #         - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+      #     networks:
+      #         - sail
+      #     healthcheck:
+      #         test:
+      #             - CMD
+      #             - mysqladmin
+      #             - ping
+      #             - '-p${DB_PASSWORD}'
+      #         retries: 3
+      #         timeout: 5s
+      # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+      # phpmyadmin:
+      #     image: phpmyadmin/phpmyadmin
+      #     restart: unless-stopped
+      #     links:
+      #         - mysql:mysql
+      #     ports:
+      #         - 8080:80
+      #     environment:
+      #         MYSQL_USERNAME: '${DB_USERNAME}'
+      #         MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      #         PMA_HOST: mysql
+      #     networks:
+      #         - sail
+      # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+      # sqlite3:
+      #     #image: nouchka/sqlite3:latest
+      #     image: esolang/sqlite3:latest
+      #     stdin_open: true
+      #     tty: true
+      #     volumes:
+      #         - './database/:/root/database/'
+      # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   redis:
     image: 'redis:alpine'
-    restart: unless-stopped    
+    restart: unless-stopped
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     volumes:
@@ -99,10 +99,10 @@ services:
         - ping
       retries: 3
       timeout: 5s
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #             
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   pgsql:
     image: 'postgres:${DB_POSTGRES_VERSION}'
-    restart: unless-stopped    
+    restart: unless-stopped
     ports:
       - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
@@ -126,7 +126,7 @@ services:
         - '${DB_USERNAME}'
       retries: 3
       timeout: 5s
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #       
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 networks:
   sail:
     driver: bridge
