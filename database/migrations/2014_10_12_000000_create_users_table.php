@@ -15,12 +15,20 @@ return new class extends Migration
             $table->id();
             $table->uuid();
             $table->string('name', 191);
-            $table->string('email', 191)->unique();
+            $table->string('email', 191);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 191);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            /**
+             * Index
+             */
+            $table->renameIndex('users_pkey', 'PK_user_id');
+            $table->index('id', 'IX_user_id');
+            $table->index('uuid', 'IX_user_uuid');
+            $table->unique('email', 'UQ_user_email');
+
         });
         //DB::statement('ALTER TABLE users ALTER COLUMN uuid SET DEFAULT uuid_generate_v4();');
     }

@@ -33,11 +33,18 @@ return new class extends Migration
             $table->binary('profile_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            /**
+             * Index
+             */
             $table->foreign('user_id', 'FK_profiles_users')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('RESTRICT')
                 ->onDelete('RESTRICT');
+            $table->renameIndex('profiles_pkey', 'PK_profile_id');
+            $table->index('id', 'IX_profile_id');
+            $table->index('uuid', 'IX_profile_uuid');
+            $table->unique('user_id', 'UQ_user_id');
         });
     }
 

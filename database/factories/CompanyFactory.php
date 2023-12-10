@@ -13,10 +13,10 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_uuid' => $this->faker->uuid(),
+            'uuid' => $this->faker->uuid(),
             'company_active' => $this->faker->boolean(true),
             'company_is_parent' => $this->faker->boolean(false),
-            'company_parent_id' => '1',
+            'company_parent_id' => $this->faker->numberBetween(1, 1),
             'company_federal_register' => $this->faker->word(),
             'company_state_register' => $this->faker->word(),
             'company_municipal_register' => $this->faker->word(),

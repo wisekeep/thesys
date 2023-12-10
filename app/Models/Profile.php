@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Profile extends Model
 {
@@ -15,6 +16,8 @@ class Profile extends Model
     protected $model = Profile::class;
 
     protected $table = 'profiles';
+
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'user_id',
@@ -50,6 +53,15 @@ class Profile extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        self::creating(function ($model) {
+            $model->uuid = Str::uuid();
+        });
+    }
 
     public function user(): BelongsTo
     {

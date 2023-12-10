@@ -6,6 +6,7 @@ use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Company extends Model
 {
@@ -15,10 +16,10 @@ class Company extends Model
 
     protected $table = 'companies';
 
-    protected $primaryKey = 'company_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
-        'company_uuid',
+        'uuid',
         'company_active',
         'company_is_parent',
         'company_parent_id',
@@ -39,7 +40,7 @@ class Company extends Model
     ];
 
     protected $casts = [
-        'company_uuid' => 'string',
+        'uuid' => 'string',
     ];
 
     protected $dates = [
@@ -47,4 +48,13 @@ class Company extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        self::creating(function ($model) {
+            $model->uuid = Str::uuid();
+        });
+    }
 }

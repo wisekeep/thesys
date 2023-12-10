@@ -13,13 +13,13 @@ class ProfileFactory extends Factory
     {
 
         return [
-            'user_id' => $this->faker->unique()->numberBetween(1,11),
+            'user_id' => $this->faker->unique()->numberBetween(1, 11),
             'uuid' => $this->faker->uuid(),
-            'profile_image' =>  $this->faker->imageUrl(150,150),
+            'profile_image' =>  $this->faker->imageUrl(150, 150),
             'profile_cpf' => $this->faker->cpf(),
             'profile_rg' => $this->faker->rg(),
             'profile_rg_emit' => $this->faker->regexify('[A-Z]{2}'),
-            'profile_birthday' => $this->faker->date('Y-m-d','-18 years'),
+            'profile_birthday' => $this->faker->date('Y-m-d', '-18 years'),
             'profile_email' => $this->faker->unique()->companyEmail, //,  $this->faker->unique()->safeEmail,
             'profile_address' => $this->faker->streetAddress,
             'profile_number' => $this->faker->buildingNumber,
