@@ -18,6 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('profile')->get();
+
         //dd($users);
         return view('users.users', compact('users'));
     }
@@ -44,6 +45,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::with('profile')->findOrFail($id);
+
         return view('users.profile', compact('user'));
     }
 

@@ -5,9 +5,6 @@ use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         switch (DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME)) {
@@ -34,9 +31,6 @@ return new class extends Migration
         }
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         switch (DB::connection()->getPDO()->getAttribute(PDO::ATTR_DRIVER_NAME)) {

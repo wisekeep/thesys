@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -28,14 +25,10 @@ return new class extends Migration
             $table->index('id', 'IX_user_id');
             $table->index('uuid', 'IX_user_uuid');
             $table->unique('email', 'UQ_user_email');
-
         });
         //DB::statement('ALTER TABLE users ALTER COLUMN uuid SET DEFAULT uuid_generate_v4();');
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');

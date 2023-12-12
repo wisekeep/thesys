@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreignId('user_id')->constrained('users', 'id', 'FK_profile_user_id');
             $table->string('profile_image', 191)->nullable();
             $table->string('profile_cpf', 40)->nullable();
             $table->string('profile_rg', 40)->nullable();
@@ -36,11 +36,6 @@ return new class extends Migration
             /**
              * Index
              */
-            $table->foreign('user_id', 'FK_profiles_users')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('RESTRICT')
-                ->onDelete('RESTRICT');
             $table->renameIndex('profiles_pkey', 'PK_profile_id');
             $table->index('id', 'IX_profile_id');
             $table->index('uuid', 'IX_profile_uuid');
@@ -48,9 +43,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('profiles');

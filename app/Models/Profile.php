@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Carbon\Traits\Timestamp;
+use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class Profile extends Model
 {
-    use HasFactory, SoftDeletes, Timestamp;
+    use HasFactory, HasRelationships, SoftDeletes;
 
     protected $model = Profile::class;
 
