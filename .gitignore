@@ -29,8 +29,9 @@ Homestead.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij
 .idea
-
+/.idea
 ################################
+/.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
