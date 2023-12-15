@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Company;
+use App\Models\Domain;
 use App\Models\Profile;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -15,11 +16,15 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        Domain::factory(5)->create();
+
+        Tenant::factory(10)->create();
+
         User::factory()->create([
             'uuid' => fake()->uuid(),
-            'name' => env('ADMIN_USERNAME'),
-            'email' => env('ADMIN_EMAIL'),
-            'password' => Hash::make(env('ADMIN_PASSWORD')),
+            'name' => 'User Admin',
+            'email' => 'wisekeep@net.com',
+            'password' => Hash::make(123456),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'created_at' => now(),
@@ -29,7 +34,5 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
 
         Profile::factory(11)->create();
-
-        Company::factory(2)->create();
     }
 }

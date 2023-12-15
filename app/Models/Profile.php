@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Profile extends Model
 {
@@ -20,8 +19,8 @@ class Profile extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'tenant_id',
         'user_id',
-        'uuid',
         'profile_image',
         'profile_cpf',
         'profile_rg',
@@ -53,15 +52,6 @@ class Profile extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    public static function boot(): void
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->uuid = Str::uuid();
-        });
-    }
 
     public function user(): BelongsTo
     {

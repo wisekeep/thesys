@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
+            $table->foreignId('tenant_id')->constrained('tenants', 'id', 'FK_profile_tenant_id');
             $table->foreignId('user_id')->constrained('users', 'id', 'FK_profile_user_id');
             $table->string('profile_image', 191)->nullable();
             $table->string('profile_cpf', 40)->nullable();
@@ -38,7 +38,6 @@ return new class extends Migration
              */
             $table->renameIndex('profiles_pkey', 'PK_profile_id');
             $table->index('id', 'IX_profile_id');
-            $table->index('uuid', 'IX_profile_uuid');
             $table->unique('user_id', 'UQ_user_id');
         });
     }

@@ -8,31 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Company extends Model
+class Tenant extends Model
 {
     use HasFactory, HasRelationships, SoftDeletes;
 
-    protected $model = Company::class;
+    protected $model = Tenant::class;
 
-    protected $table = 'companies';
+    protected $table = 'tenants';
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
         'uuid',
-        'company_active',
-        'company_is_parent',
-        'company_parent_id',
-        'company_federal_register',
-        'company_state_register',
-        'company_municipal_register',
-        'company_name',
-        'company_business_name',
-        'company_address',
-        'company_number',
-        'company_email',
-        'company_obs',
-        'company_file',
+        'tenant_active',
+        'tenant_is_parent',
+        'tenant_parent_id',
+        'tenant_federal_register',
+        'tenant_state_register',
+        'tenant_municipal_register',
+        'tenant_name',
+        'tenant_business_name',
+        'tenant_address',
+        'tenant_number',
+        'tenant_email',
+        'tenant_obs',
+        'tenant_file',
     ];
 
     protected $guarded = [
