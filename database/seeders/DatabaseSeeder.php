@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         Tenant::factory(10)->create();
 
         User::factory()->create([
-            'uuid' => fake()->uuid(),
+            //'uuid' => fake()->uuid(),
             'name' => 'User Admin',
             'email' => 'wisekeep@net.com',
             'password' => Hash::make(123456),

@@ -37,8 +37,8 @@ return new class extends Migration
              * Index
              */
             $table->renameIndex('profiles_pkey', 'PK_profile_id');
-            $table->index('id', 'IX_profile_id');
-            $table->unique('user_id', 'UQ_user_id');
+            //$table->index('id', 'IX_profile_id');
+            //$table->unique('user_id', 'UQ_user_id');
         });
     }
 

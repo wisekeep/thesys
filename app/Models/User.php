@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -15,6 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasRelationships, Notifiable, SoftDeletes;
+    use UsesUuid;
 
     protected $model = User::class;
 
@@ -44,14 +46,14 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
-    public static function boot(): void
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->uuid = Str::uuid();
-        });
-    }
+    //    public static function boot(): void
+    //    {
+    //        parent::boot();
+    //
+    //        self::creating(function ($model) {
+    //            $model->uuid = Str::uuid();
+    //        });
+    //    }
 
     public function profile(): HasOne
     {

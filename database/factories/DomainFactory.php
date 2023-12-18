@@ -13,8 +13,8 @@ class DomainFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid(),
-            'domain' => $this->faker->domainWord(),
+            //'uuid' => $this->faker->uuid(),
+            'domain' => $this->faker->unique()->domainName(),
             'tenant_id' => $this->faker->unique()->numberBetween(1, 10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

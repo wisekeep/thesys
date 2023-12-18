@@ -13,7 +13,7 @@ class TenantFactory extends Factory
     public function definition(): array
     {
         return [
-            'uuid' => $this->faker->uuid(),
+            //'uuid' => $this->faker->uuid(),
             'tenant_active' => $this->faker->boolean(true),
             'tenant_is_parent' => $this->faker->boolean(false),
             'tenant_parent_id' => $this->faker->numberBetween(1, 1),

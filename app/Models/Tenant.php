@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,7 @@ use Illuminate\Support\Str;
 class Tenant extends Model
 {
     use HasFactory, HasRelationships, SoftDeletes;
+    use UsesUuid;
 
     protected $model = Tenant::class;
 
@@ -49,12 +51,12 @@ class Tenant extends Model
         'deleted_at',
     ];
 
-    public static function boot(): void
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->uuid = Str::uuid();
-        });
-    }
+    //    public static function boot(): void
+    //    {
+    //        parent::boot();
+    //
+    //        self::creating(function ($model) {
+    //            $model->uuid = Str::uuid();
+    //        });
+    //    }
 }
